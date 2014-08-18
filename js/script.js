@@ -11,5 +11,5 @@
     //osmTiles.addTo(map);
     OpenMapSurfer_Roads.addTo(map);
     geojsonLayer.addTo(map);
-    
+    L.control.locate().addTo(map);
 })(L);
