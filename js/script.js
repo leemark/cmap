@@ -6,10 +6,16 @@
     OpenMapSurfer_Roads = L.tileLayer('http://openmapsurfer.uni-hd.de/tiles/roads/x={x}&y={y}&z={z}', {
         attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
     }),    
-    geojsonLayer = new L.GeoJSON.AJAX("data/ccgeo.json");
+    geojsonLayer = new L.GeoJSON.AJAX("data/ccgeo.json"),
+    baseMaps = {};
     
     //osmTiles.addTo(map);
     OpenMapSurfer_Roads.addTo(map);
     geojsonLayer.addTo(map);
     L.control.locate().addTo(map);
+    baseMaps = {
+            "Flat": osmTiles,
+            "3D Buildings": OpenMapSurfer_Roads
+        };
+    L.control.layers(baseMaps, {position: 'topright'}).addTo(map);
 })(L);
